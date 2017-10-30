@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="container">
+        <h1>Simple General Knowledge Quiz for Kids<div class="period"></div></h1>
+    </header>
+
+    <section class="container">
+        <p>
+            <span class="first-word">Instructions:</span> You'll be presented with a series of questions. Enter your answer in the box below.
+        </p>
+    </section>
+
+    <section class="container form fade">
+        <div class="nest">
+            <span class="remaining">1/5</span>
+            <form id="myForm" action="">
+                <p class="question"></p>
+                <label for="name"></label>
+                <input class="answer" type="text" placeholder="Enter your guess">
+                <button type="submit" class="btn">Submit</button>
+                <p>Hint:<span class="hint"></span> </p>
+            </form>
+        </div>
+    </section>
+
+    <section class="container fade">
+        <div class="answers">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="correct">Correct</th>
+                        <th class="wrong">Wrong</th>
+                        <th class="total">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="correct">0</td>
+                        <td class="wrong">0</td>
+                        <td class="total">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer class="container">
+        <div class="footer">
+            <p>Disclaimer: I got the questions from this website:
+                <a href="http://www.kidsworldfun.com/quiz-gk-for-kids.php">Kids World Fun</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
