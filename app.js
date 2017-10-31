@@ -1,11 +1,11 @@
 // global variables, current question index, etc (ain't kosher)
-let form, index, q, correct, wrong, total, remaining;
-let formContainer;
-let correctAnswers, wrongAnswers;
-let userAnswers = [];
-let hintLetter;
+var form, index, q, correct, wrong, total, remaining;
+var formContainer;
+var correctAnswers, wrongAnswers;
+var userAnswers = [];
+var hintLetter;
 
-let questions = [
+var questions = [
     'Which is the heavier metal of these two? Gold or Silver?',
     'Which is the most common non-contagious disease in the world?',
     'Which is the coldest location in the earth?',
@@ -14,7 +14,7 @@ let questions = [
     'Which is the nearest star to planet earth?'
 ]
 
-let answers = [
+var answers = [
     'gold',
     'Tooth Decay',
     'East Antarctica',
@@ -75,8 +75,8 @@ function isAnswerCorrect(answer){
 
 function queryInput(evt) {
     // Get user's input
-    let userInput = document.querySelector(".answer").value;
-    let hint = document.querySelector(".hint");
+    var userInput = document.querySelector(".answer").value;
+    var hint = document.querySelector(".hint");
 
     // do not reload the page on submit, prevent browser's default behaviour
     evt.preventDefault();
@@ -106,7 +106,7 @@ function queryInput(evt) {
             
             createElement('BUTTON', "Play again")
 
-            let btn = document.querySelector("button")
+            var btn = document.querySelector("button")
             btn.addEventListener("click", function(){
                 location.reload();
             });
@@ -155,10 +155,10 @@ function removeQuestions() {
 }
 
 function addElement(typeOfElement) {
-    let createList = document.createElement(typeOfElement);
+    var createList = document.createElement(typeOfElement);
 
-    for (let i = 0; i < userAnswers.length; i++) {
-        let listItem = document.createElement('li');
+    for (var i = 0; i < userAnswers.length; i++) {
+        var listItem = document.createElement('li');
         listItem.appendChild(document.createTextNode(userAnswers[i]));
         createList.appendChild(listItem);
     }
@@ -167,8 +167,8 @@ function addElement(typeOfElement) {
 
 // Create heading
 function createElement(element, text) {
-    let el = document.createElement(element);
-    let content = document.createTextNode(text);
+    var el = document.createElement(element);
+    var content = document.createTextNode(text);
     el.appendChild(content);
     return formContainer.appendChild(el);
 }
