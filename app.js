@@ -58,7 +58,14 @@ function init() {
 function displayQuestion(index) {
     q.textContent = questions[index];
     
-
+    /* experimental tech that does not work on iOS
+    q.animate([
+        {opacity: '0'},
+        {opacity: '1'}
+    ], 
+    {
+        duration: 1500
+    }); */
 
     remaining.textContent = (index + 1) + "/" + questions.length;
 }
