@@ -79,10 +79,9 @@ function queryInput(evt) {
     let hint = document.querySelector(".hint");
 
     // do not reload the page on submit, prevent browser's default behaviour
-    
+    evt.preventDefault();
 
     console.log("Input: " + userInput);
-    return false;
 
     // Check if the answer is correct
     if (isAnswerCorrect(userInput)){
