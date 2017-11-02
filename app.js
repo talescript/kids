@@ -23,11 +23,13 @@ let answers = [
     'Sun'
 ]
 
-window.onload = init(); // where is this called?
+window.onload = init; // where is this called?
 
 function init() {
     // show how many questions remain
     remaining = document.querySelector(".remaining");
+    remaining.innerHTML = (index + 1) + "/" + questions.length;
+    alert("code is not being run");
 
     q = document.querySelector(".question");
     
