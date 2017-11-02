@@ -64,7 +64,6 @@ function displayQuestion(index) {
     {
         duration: 1500
     });
-    alert("code is not being run");
 
     remaining.textContent = (index + 1) + "/" + questions.length;
 }
