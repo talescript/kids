@@ -54,16 +54,11 @@ function init() {
     form.addEventListener("submit", queryInput);
 }
 
+
 function displayQuestion(index) {
     q.textContent = questions[index];
     
-    q.animate([
-        {opacity: '0'},
-        {opacity: '1'}
-    ], 
-    {
-        duration: 1500
-    });
+
 
     remaining.textContent = (index + 1) + "/" + questions.length;
 }
