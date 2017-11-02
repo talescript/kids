@@ -1,22 +1,27 @@
-'use strict';
-
 // global variables, current question index, etc (ain't kosher)
-var form = void 0,
-    index = void 0,
-    q = void 0,
-    correct = void 0,
-    wrong = void 0,
-    total = void 0,
-    remaining = void 0;
-var formContainer = void 0;
-var correctAnswers = void 0,
-    wrongAnswers = void 0;
-var userAnswers = [];
-var hintLetter = void 0;
+let form, index, q, correct, wrong, total, remaining;
+let formContainer;
+let correctAnswers, wrongAnswers;
+let userAnswers = [];
+let hintLetter;
 
-var questions = ['Which is the heavier metal of these two? Gold or Silver?', 'Which is the most common non-contagious disease in the world?', 'Which is the coldest location in the earth?', 'Which is the hottest place in the earth?', 'Which is the animal referred as the ship of the desert?', 'Which is the nearest star to planet earth?'];
+let questions = [
+    'Which is the heavier metal of these two? Gold or Silver?',
+    'Which is the most common non-contagious disease in the world?',
+    'Which is the coldest location in the earth?',
+    'Which is the hottest place in the earth?',
+    'Which is the animal referred as the ship of the desert?',
+    'Which is the nearest star to planet earth?'
+]
 
-var answers = ['gold', 'Tooth Decay', 'East Antarctica', 'Ethiopia', 'Camel', 'Sun'];
+let answers = [
+    'gold',
+    'Tooth Decay',
+    'East Antarctica',
+    'Ethiopia',
+    'Camel',
+    'Sun'
+]
 
 window.onload = init; // where is this called?
 
@@ -25,7 +30,7 @@ function init() {
     remaining = document.querySelector(".remaining");
 
     q = document.querySelector(".question");
-
+    
     // not needed nor used in the function
     // userInput = document.querySelector(".answer").value;
 
@@ -51,65 +56,79 @@ function init() {
 
 function displayQuestion(index) {
     q.textContent = questions[index];
-
-    q.animate([{ opacity: '0' }, { opacity: '1' }], {
+    
+    q.animate([
+        {opacity: '0'},
+        {opacity: '1'}
+    ], 
+    {
         duration: 1500
     });
 
-    remaining.innerHTML = index + 1 + "/" + questions.length;
+    remaining.innerHTML = (index + 1) + "/" + questions.length;
 }
 
-function isAnswerCorrect(answer) {
+function isAnswerCorrect(answer){
     // Compare both in lowercases, not only the correct answer
-    return answer.toLowerCase() === answers[index].toLowerCase();
+    return (answer.toLowerCase() === answers[index].toLowerCase());
 }
 
 function queryInput(evt) {
     // Get user's input
-    var userInput = document.querySelector(".answer").value;
-    var hint = document.querySelector(".hint");
+    let userInput = document.querySelector(".answer").value;
+    let hint = document.querySelector(".hint");
 
     // do not reload the page on submit, prevent browser's default behaviour
-    evt.preventDefault();
+    
 
     console.log("Input: " + userInput);
+    return false;
 
     // Check if the answer is correct
-    if (isAnswerCorrect(userInput)) {
-        console.log("correct answer");
+    if (isAnswerCorrect(userInput)){
+        console.log("correct answer")
         userAnswers.push(userInput);
         correctAnswers++;
         hintLetter = 0;
         hint.textContent = "";
 
         // if there is a next question, let's display it
-        if (index < questions.length - 1) {
-            index++; //next question
+        if (index < questions.length - 1){
+            index++ //next question
             displayQuestion(index);
         } else {
             console.log("Last question, do something. maybe restart");
             removeQuestions();
 
-            createElement('h3', "Your answers:");
-
+            createElement('h3', "Your answers:")
+            
             // show answers entered
             document.querySelector(".form").appendChild(addElement("ol"));
+            
+            createElement('BUTTON', "Play again")
 
-            createElement('BUTTON', "Play again");
-
-            var btn = document.querySelector("button");
-            btn.addEventListener("click", function () {
+            let btn = document.querySelector("button")
+            btn.addEventListener("click", function(){
                 location.reload();
             });
 
-            formContainer.animate([{ opacity: '0' }, { opacity: '1' }], {
+            formContainer.animate([
+                {opacity: '0'},
+                {opacity: '1'}
+            ], 
+            {
                 duration: 2000
             });
+
         }
     } else {
         console.log("Wrong answer, try again");
         hint.textContent += answers[index][hintLetter];
-        hint.animate([{ opacity: '0' }, { opacity: '1' }], {
+        hint.animate([
+            {opacity: '0'},
+            {opacity: '1'}
+        ], 
+        {
             duration: 1500
         });
         hintLetter++;
@@ -121,7 +140,8 @@ function queryInput(evt) {
     // update display of correct answers, wrong answers and total
     correct.textContent = correctAnswers;
     wrong.textContent = wrongAnswers;
-    total.textContent = ((correctAnswers - wrongAnswers) / questions.length * 100).toFixed(2) + "%";
+    total.textContent = (((correctAnswers - wrongAnswers) / 
+                           questions.length) * 100).toFixed(2) + "%" ;
     console.log(userAnswers);
 
     // empty the form input fields;
@@ -129,17 +149,17 @@ function queryInput(evt) {
 }
 
 function removeQuestions() {
-
+    
     //formContainer = document.querySelector(".form");
     nested = document.querySelector(".nest");
     formContainer.removeChild(nested);
 }
 
 function addElement(typeOfElement) {
-    var createList = document.createElement(typeOfElement);
+    let createList = document.createElement(typeOfElement);
 
-    for (var i = 0; i < userAnswers.length; i++) {
-        var listItem = document.createElement('li');
+    for (let i = 0; i < userAnswers.length; i++) {
+        let listItem = document.createElement('li');
         listItem.appendChild(document.createTextNode(userAnswers[i]));
         createList.appendChild(listItem);
     }
@@ -148,8 +168,8 @@ function addElement(typeOfElement) {
 
 // Create heading
 function createElement(element, text) {
-    var el = document.createElement(element);
-    var content = document.createTextNode(text);
+    let el = document.createElement(element);
+    let content = document.createTextNode(text);
     el.appendChild(content);
     return formContainer.appendChild(el);
 }
