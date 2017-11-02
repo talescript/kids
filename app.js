@@ -66,7 +66,7 @@ function displayQuestion(index) {
     });
     alert("code is not being run");
 
-    remaining.innerHTML = (index + 1) + "/" + questions.length;
+    remaining.textContent = (index + 1) + "/" + questions.length;
 }
 
 function isAnswerCorrect(answer){
