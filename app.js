@@ -23,7 +23,7 @@ let answers = [
     'Sun'
 ]
 
-window.onload = init; // where is this called?
+window.onload = init(); // where is this called?
 
 function init() {
     // show how many questions remain
